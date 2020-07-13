@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>Hack Week Radio Station</title>
+    <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+    <style>
+        body {
+            background: url(img/cloudy-day.png) repeat 0 0;
+            display: flex;
+            justify-content: center;
+        }
+        h1 {
+            padding-top: 50px;
+            text-shadow: 1px 1px 1px #ccc;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Corben', Georgia, Times, serif;
+        }
+        p, div {
+            font-family: 'Nobile', Helvetica, Arial, sans-serif;
+        }
+
+        #container {
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Dropbox Hack Week 2020</h1>
+        <p>Since we are all remote this Hack Week, some Dropboxers thought it would be fun to set up a
+            radio station for anyone to listen to while they hack! We'll try to have music running 24/7
+            during hack week, and you can see our scheduled DJ hours in this <a href="">Paper doc</a>.
+        </p>
+        <br>
+        <center>
+            <audio autoplay controls crossorigin="anonymous" src="https://streamingv2.shoutcast.com/hackweek2020" id="stream" />
+        </center>
+        <br>
+        <canvas id="canvas"></canvas>
+        <div id="fps"></div>
+    </div>
+    <script type="text/javascript">
+        const audioPlayer = document.getElementById("stream");
+
+        let tryPlay = () => {
+            if (audioPlayer.paused) {
+                audioPlayer.load();
+            }
+        };
+        const interval = setInterval(tryPlay, 5000);
+    </script>
+</body>
+</html>
